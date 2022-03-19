@@ -1,0 +1,25 @@
+<style>
+    body {
+        width: 300px;
+        position: relative;
+    }
+ 
+    .aside {
+        width: 100px;
+        height: 150px;
+        float: left;
+        background: #f66;
+    }
+ 
+    .main {
+        height: 200px;
+        background: #fcc;
+		overflow: hidden;
+    }
+</style>
+<body>
+    <div class="aside"></div>
+    <div class="main">    
+        overflow可以引发BFC，从而可以用于两列布局
+    </div>
+</body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>父元素中有overflow:hidden, 子元素absolute不能显示</title>  
+    <style>  
+        .parent{  
+            height:40px;  
+            width:200px;  
+            border:solid 1px black;  
+            position:relative;  
+        }  
+        .sub{  
+            position:absolute;  
+            top:10px;  
+            left:10px;  
+            height:50px;  
+            width:300px;  
+            background-color:red  
+        }  
+          
+        .overHidden{  
+            overflow:hidden;    /* 同样会隐藏position:absolute的子元素 */  
+        }  
+    </style>  
+</head>  
+<body>  
+这个是有overflow:hidden  
+    <div class="parent overHidden">  
+        <div class="sub"></div>  
+    </div>  
+    这个没有  
+    <div class="parent">  
+        <div class="sub"></div>  
+    </div>  
+</body>  
+</html>  

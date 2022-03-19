@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>display none demo</title>
+	<style>
+		.parent{margin: 10px; border: 1px solid red;}
+		.dn{display: none; height: 50px; background-color: yellow;}
+		.vh{visibility: hidden; height: 50px;}
+	</style>
+</head>
+<body>
+	<div class="parent">
+		<div class="dn">这是display: none</div>
+	</div>
+	after
+	<div class="parent">
+		<div class="vh">visibility: hidden</div>
+	</div>
+	after
+	<p>display:none不可见，且位置不留。 后者visibility: hidden虽然内容不可见，但位置还是留着的。
+	</p>
+</body>
+</html>

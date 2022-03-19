@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>北大网页示例</title>
+    <style>
+        *{ padding: 0px; margin:0px;}
+        li{ list-style-type: none;}
+        a{ text-decoration: none;}
+        .clearfix{ 
+            *zoom:1;/*IE/7/6*/
+        }
+        .clearfix:before,.clearfix:after{ 
+            content:""; 
+            display:table;
+            line-height:0;
+        } 
+        .clearfix:after{clear:both;} 
+
+
+        .nav{ width: 1000px; height: 50px; margin: 0 auto; background-color: #8F000B;}
+        .banner{width: 1424px;  height: 250px; margin: 0 auto;}
+        .content{width: 1000px;  margin: 0 auto;}
+        .footer{width: 1000px;  height: 40px;  margin: 0 auto; background-color: #1a1a1a;}
+      
+        .navwrapper{
+            background-color: #8F000B;
+        }
+        .footerwrapper{
+            background-color: #1a1a1a;
+        }
+
+        .nav li{display:inline-block; width: 100px; color:white;
+            height: 50px;
+            line-height: 50px;
+        }
+        .nav li:hover{ background-color: #DDA813;}
+        .nav { position:relative;}
+
+        .breadcrumbs{
+            height: 20px;
+        }
+
+        .notice{
+            width: 730px; 
+            height: 230px; /* temp */
+            border: 1px solid #aaa;
+            float: left;
+        }
+        .right{
+            width: 250px;
+            /*height: 600px;  temp */
+            float: right;
+        }
+        .applications{
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+        .applications li{
+            display: block;
+            float: left;
+            width: 70px;
+            height: 20px;           
+        }
+        .biglinks li{ float: left; }
+        .biglinks img{ width: 120px;}
+
+        .footer{
+            color: aliceblue;
+            line-height: 40px;
+        }
+
+
+        .nav .login {position: absolute; top:10px;right: 0px;}
+        .nav .login input{ border: none; width:150px; height:22px; background-color: #7B0200;}
+        .nav .login .search-icon { position: absolute; top :2px; right: 10px;}
+
+    </style>
+</head>
+<body>
+
+    <div class="navwrapper">
+        <div class="nav">
+            <ul>
+                <li>您好，请登录</li>
+                <li>北大主页</li>
+                <li>网络服务</li>
+                <li>北大邮箱</li>
+                <li>图书馆</li>
+            </ul>   
+            <div class="login">
+                <input placeholder="搜索人员">
+                <div class="search-icon"><img src="images/search_go.png"></div>
+            </div>     
+        </div>
+    </div>
+
+    <div class="banner">
+        <img src="images\banner.jpg">
+    </div>
+
+    <div class="content clearfix">
+        <div class="breadcrumbs">
+            首页 &lt; 单位公告 &lt; 关于召开基层工会文体委员工作会议的通知
+        </div>
+
+        <div class="notice">
+            .....
+        </div>
+
+        <div class="right clearfix">
+            <div class="applications clearfix">
+                <ul>
+ 
+                
+                <li>选课</li><li>教学网</li><li>	学生管理</li><li>
+                人事</li><li>	办公</li><li>	短信平台</li><li>
+                财务</li><li>	组工</li><li>	党校培训</li><li>
+                设备</li><li>	采购</li><li>	测试基金</li><li>
+                公房</li><li>	家具</li><li>	校园卡</li><li>
+                更多...</li>
+                </ul>	 	 
+
+            </div>
+            <div class="biglinks clearfix">
+                <ul>
+                    <li><a href=""><img src="images/bdxxfw.png" alt=""></a></li>
+                    <li><a href=""><img src="images/ipgw.png" alt=""></a></li>
+                    <li><a href=""><img src="images/ipgw_android.png" alt=""></a></li>
+                    <li><a href=""><img src="images/bdxxfw.png" alt=""></a></li>
+                    <li><a href=""><img src="images/ptandroid.png" alt=""></a></li>
+                    <li><a href=""><img src="images/ptios.png" alt=""></a></li>
+                </ul>
+
+            </div>
+
+            <div class="qrcods">
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="footerwrapper">
+        <div class="footer">
+            地址：北京市海淀区颐和园路5号邮编：100871邮箱：sermis@pku.edu.cn服务热线：010-62751023 
+        </div>
+    </div>
+    
+    
+</body>
+</html>

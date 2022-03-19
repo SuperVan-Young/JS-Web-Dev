@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>float后面用clear</title>
+	<style>
+		div{line-height: 50px;}
+		.f-left{float: left; background-color: blue;width:200px; height:200px;}
+		.f-left2{float: left; background-color: green;width:400px;height:150px;}
+		.f-right{float: right; background-color: pink;width:300px;height:400px;}
+
+		.another{background-color: yellow; clear:none;} 
+		/* 试试 改clear 为 left, right, both, none */
+		
+		.container{border: 1px solid red;}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="f-left">float: left;</div>
+	<div class="f-right">float: right;</div>
+	<div class="another">
+	As much mud in the streets as if the waters had but newly retired from the face of the earth, and it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up Holborn.	
+	</div>
+	
+</div>
+
+</body>
+</html>

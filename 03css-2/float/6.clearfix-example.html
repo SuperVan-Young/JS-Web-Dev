@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clear float</title>
+    <style type="text/css">
+        .container{
+            margin: 30px auto;
+            width:600px;
+            height: 300px;
+        }
+        .parent{
+            border:solid 3px #a33;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color: #060;
+            margin: 10px;
+            float: left;
+        }
+
+
+		.clearfix{
+			*zoom:1;
+		}
+		.clearfix:after{
+			content:"";
+			display:table;
+			clear:both;
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+		lskdjfkladsfklsjdk
+    </div>
+
+    <div class="container">
+        <div class="parent clearfix">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+        lskdjfkladsfklsjdk
+    </div>
+
+</body>
+</html>

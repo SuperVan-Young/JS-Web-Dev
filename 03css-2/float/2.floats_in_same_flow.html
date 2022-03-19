@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>float的元素在同一文档流中</title>
+	<style>
+		body{border: 1px solid red;}
+		div{line-height: 50px;}
+		.sample0{background-color: blue;}
+		.sample1{background-color: pink;}
+		.sample2{background-color: green;}
+		span{ background-color: red; }
+
+		div{float: left;}
+	</style>
+</head>
+<body>
+	<div class="sample0">float: left;</div>
+	<div class="sample1">float: left;</div><span>这是文字</span>
+	<div class="sample2">float: left;</div>
+	float可以将div弄到水平并排显示，
+	但这与display:inline的效果是不同的。
+</body>
+</html>
