@@ -1,16 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        
+      /* global setting */
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
+      .clearfix {
+        /* IE/7/6 */
+        *zoom: 1;
+      }
+
+      .clearfix::before,
+      .clearfix::after {
+        content: "";
+        display: table;
+      }
+
+      .clearfix::after {
+        clear: both;
+      }
+
+      /* 导航栏和海报都直接用了北大官网的图，看着还挺以假乱真的 */
+      /* navigator */
+      .navWrap {
+        display: block;
+        clear: both;
+        margin: 0 auto;
+        background-color: #700005;
+      }
+
+      .nav {
+        width: 1000px;
+        height: 32px;
+        margin: 0 auto;
+        background-color: #700005;
+      }
+
+      .subNav {
+        float: right;
+        height: 32px;
+        margin: 0 auto;
+        background-color: #700005;
+      }
+
+      .subNav ul li {
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin: 0 auto;
+        color: #e5e3e3;
+        font-size: 14px;
+      }
+
+      .subNav ul li:hover {
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      /* banner */
+      .bannerWrap {
+        display: block;
+        clear: both;
+        margin: 0 auto;
+        background-color: #8c0000;
+      }
+
+      .banner {
+        width: 1000px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: #8c0000;
+      }
+
+      .bannerBackground {
+        float: right;
+        margin: 0 auto;
+        height: 100px;
+      }
+
+      .bannerLogo {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 auto;
+        padding: 20px 0px;
+        height: 60px;
+      }
+
+      .bannerLogo:hover {
+        color: #e5e3e3;
+        cursor: pointer;
+      }
+
+      .bannerText {
+        position: relative;
+        display: inline;
+        top: 30px;
+        left: 20px;
+        margin: auto;
+        border: 0;
+        border-left: 1px;
+        border-style: solid;
+        border-color: white;
+        padding: 0px 20px;
+        height: 60px;
+        text-align: center;
+        font-size: 30px;
+        color: white;
+      }
+
+      .bannerText:hover {
+        color: #e5e3e3;
+        cursor: pointer;
+      }
+
+      /* contents */
+      .content {
+        width: 1000px;
+        margin: 0 auto;
+        padding-bottom: 20px;
+      }
+
+      .notice {
+        display: inline-block;
+        margin: 20px 10px 0px 10px;
+        width: 470px;
+        height: auto;
+        font-size: 20px;
+      }
+
+      .noticeList {
+        margin: 10px 0px;
+        border-width: 1px;
+        border-top-width: 2px;
+        border-color: gray;
+        border-top-color: rgb(236, 195, 10);
+        border-style: solid;
+        padding: 10px 0px;
+        height: auto;
+        font-size: 16px;
+      }
+
+      .noticeList ul {
+        list-style-type: none;
+      }
+
+      .noticeList ul li {
+        padding: 2px 15px;
+        vertical-align: top;
+        color: black;
+      }
+
+      .mainnav {
+        float: right;
+        margin: 57px 10px 0px 10px;
+        height: auto;
+        width: 260px;
+        font-size: 20px;
+      }
+
+      /* application的代码参考了给的样例代码。
+         背景图片变换，以及float相连的排版是仿照那个做的。
+      */
+
+      .applications {
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+        width: 240px;
+        height: 480px;
+      }
+
+      .applications li {
+        float: left;
+        list-style-type: none;
+        width: 120px;
+        height: 120px;
+        text-align: center;
+        background-position: 45px 30px;
+        background-repeat: no-repeat;
+      }
+
+      .applications li span {
+        display: block;
+        padding: 70px 40px;
+        font-size: 15px;
+      }
+
+      .applications li:hover {
+        color: white;
+        background-color: #8c0000;
+        cursor: pointer;
+      }
+
+      .applications .calendar {
+        background-image: url(images/calendar_m.png);
+      }
+      .applications .calendar:hover {
+        background-image: url(images/calendar_h.png);
+      }
+      .applications .software {
+        background-image: url(images/software_m.png);
+      }
+      .applications .software:hover {
+        background-image: url(images/software_h.png);
+      }
+
+      .qrcode {
+        width: 240px;
+        height: 240px;
+      }
+
+      .qrcode li {
+        float: left;
+        list-style-type: none;
+        width: 120px;
+        height: 120px;
+        text-align: center;
+        background-position: 30px 30px;
+        background-size: 80px 80px;
+        background-repeat: no-repeat;
+      }
+
+      .qrcode li span {
+        display: block;
+        padding: 110px 40px;
+        font-size: 15px;
+      }
+
+      .qrcode li span:hover {
+        color: #8c0000;
+        cursor: pointer;
+      }
+
+      .qrcode .bdxxfw {
+        background-image: url(images/bdxxfw.png);
+      }
+
+      /* footer */
+      .footerWrap {
+        display: block;
+        clear: both;
+        margin: 0 auto;
+        background-color: #1a1a1a;
+      }
+
+      .footer {
+        width: 1000px;
+        height: 50px;
+        margin: 0 auto;
+        background-color: #1a1a1a;
+      }
+
+      .footer ul li {
+        display: inline;
+        padding: 20px 10px;
+        text-align: left;
+        font-size: 10px;
+        color: white;
+      }
     </style>
-</head>
-<body>
-    
-</body>
+  </head>
+
+  <body>
+    <div class="navWrap">
+      <div class="nav">
+        <div class="subNav clearfix">
+          <ul>
+            <li>请登录</li>
+            <li>燕云直播</li>
+            <li>网络</li>
+            <li>邮箱</li>
+            <li>客户端</li>
+            <li>EN</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bannerWrap">
+      <img
+        class="bannerBackground clearfix"
+        src="images/banner.gif"
+        alt="bannerBackground"
+      />
+      <div class="banner">
+        <img
+          class="bannerLogo"
+          src="images/pkulogo_white.svg"
+          alt="pkulogo_grey"
+        />
+        <div class="bannerText">校内信息门户</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="notice">
+        学校公告
+        <div class="noticeList">
+          <ul>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+          </ul>
+        </div>
+      </div>
+      <div class="notice">
+        干部选任公告
+        <div class="noticeList">
+          <ul>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+          </ul>
+        </div>
+      </div>
+      <div class="notice" style="width: 700px">
+        单位公告
+        <div class="noticeList">
+          <ul>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+            <li>测试数据</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mainnav clearfix">
+        <div class="applications">
+          <ul>
+            <li class="calendar"><span>校历</span></li>
+            <li class="software"><span>正版软件</span></li>
+            <li class="calendar"><span>校历</span></li>
+            <li class="software"><span>正版软件</span></li>
+            <li class="calendar"><span>校历</span></li>
+            <li class="software"><span>正版软件</span></li>
+            <li class="calendar"><span>校历</span></li>
+            <li class="software"><span>正版软件</span></li>
+          </ul>
+        </div>
+        <div class="qrcode">
+          <ul>
+            <li class="bdxxfw"><span>bdxxfw</span></li>
+            <li class="bdxxfw"><span>bdxxfw</span></li>
+            <li class="bdxxfw"><span>bdxxfw</span></li>
+            <li class="bdxxfw"><span>bdxxfw</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerWrap">
+      <div class="footer">
+        <ul>
+          <li>版权所有：XCH</li>
+          <li>地址：北京市海淀区颐和园路5号</li>
+          <li>邮编：100871</li>
+          <li>邮箱：its@pku.edu.cn</li>
+          <li>电话：010-62751023</li>
+          <li>支持：北京大学计算中心</li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
