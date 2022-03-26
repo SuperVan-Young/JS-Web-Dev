@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
+    <!--
+      声明：作业里用到的素材是从一个免费下载游戏素材的网站 www.kenney.nl 下载的。
+      本来想做个打地鼠，但是找不到素材……
+     -->
+
     <style>
       #canvas {
         background-color: black;
@@ -16,60 +21,129 @@
 
       .alien {
         background-repeat: no-repeat;
-        background-size: 100px 100px;
-        position: relative;
-        width: 100px;
-        height: 100px;
+        background-size: 100px auto;
+        background-position: center;
+        position: absolute;
+        width: 120px;
+        height: 120px;
         z-index: 10;
+      }
+
+      .title {
+        color: red;
+        font-size: larger;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      #scoreboard {
+        color: white;
+        font-size: larger;
+      }
+
+      #bonus {
+        color: white;
+        font-size: larger;
       }
     </style>
   </head>
 
   <body>
-    <div id="canvas"></div>
+    <div class="title">Keep clicking the alien ships to DESTROY them!</div>
+
+    <div id="canvas">
+      <div id="scoreboard">Score: 0</div>
+      <div id="bonus">Bonus: 0</div>
+    </div>
 
     <script type="text/javascript">
-      var xInit = 0;
-      var yInit = 0;
+      function setAlienDirection(alien) {
+        var dmax = 10;
+        var dx = Math.floor(Math.random() * 2 * dmax) - dmax;
+        var dy = Math.floor(Math.random() * 2 * dmax) - dmax;
+        alien.setAttribute("dx", dx);
+        alien.setAttribute("dy", dy);
+      }
+
+      var score = 0; // total score
+      var bonus = 0; // add bonus for combos!
+      var numAliens = 0;
+
       function addAlien(alienColor) {
         var node = document.createElement("div");
         node.className = "alien";
 
         // set alien's ship picture
-        alienImg = "src/PNG/ship" + alienColor + ".png";
-        node.style.backgroundImage = "url(" + alienImg + ")";
+        node.setAttribute(
+          "alienImg",
+          "url(src/PNG/ship" + alienColor + ".png)"
+        );
+        node.setAttribute(
+          "alienImgDamage1",
+          "url(src/PNG/ship" + alienColor + "_damage1.png)"
+        );
+        node.setAttribute(
+          "alienImgDamage2",
+          "url(src/PNG/ship" + alienColor + "_damage2.png)"
+        );
+        node.style.backgroundImage = node.getAttribute("alienImg");
 
         // set initial position (within the canvas)
-        xInit = Math.floor(Math.random() * (1200 - 100));
-        yInit = Math.floor(Math.random() * (800 - 100));
-        node.style.left = xInit + "px";
-        node.style.top = yInit + "px";
+        node.style.left = Math.floor(Math.random() * (1200 - 100)) + "px";
+        node.style.top = Math.floor(Math.random() * (800 - 100)) + "px";
+
+        // set initial direction and speed
+        setAlienDirection(node);
+
+        // change picture size when hovering
+        node.onmouseover = function () {
+          this.style.backgroundSize = "110px auto";
+        };
+        node.onmouseleave = function () {
+          this.style.backgroundSize = "100px auto";
+        };
+
+        // how to destory aliens and add score
+        node.setAttribute("alienHealth", "3");
+
+        node.onclick = function () {
+          var health = parseInt(this.getAttribute("alienHealth")) - 1;
+          if (health == 2)
+            this.style.backgroundImage = this.getAttribute("alienImgDamage1");
+          else if (health == 1)
+            this.style.backgroundImage = this.getAttribute("alienImgDamage2");
+          this.setAttribute("alienHealth", String(health));
+          if (health <= 0) {
+            score += 100 + bonus
+            document.getElementById("scoreboard").innerHTML =
+              "Score: " + score;
+            if (bonus < 50) bonus = 100;
+            else bonus = Math.floor(bonus * 1.2);
+            this.parentNode.removeChild(this);
+            numAliens -= 1;
+          }
+        };
 
         document.getElementById("canvas").appendChild(node);
+        numAliens += 1;
       }
-      addAlien("Blue");
 
-      function directAliens() {
-        // change alien's direction
-        var aliens = document.getElementsByClassName("alien");
-        var node;
-        var dx = 0;
-        var dy = 0;
-        var x = 0;
-        var y = 0;
-        var dmax = 10;
-        for (let i = 0; i < aliens.length; i++) {
-          // set a random direction and speed for aliens
-          node = aliens[i];
-          dx = Math.floor(Math.random() * 2 * dmax) - dmax;
-          dy = Math.floor(Math.random() * 2 * dmax) - dmax;
-          node.setAttribute("dx", dx);
-          node.setAttribute("dy", dy);
+      // bonus will drop through time
+      setInterval(function () {
+        if (bonus > 0) {
+          bonus -= 1;
+          document.getElementById("bonus").innerHTML = "Bonus: " + bonus;
         }
-      }
-
-      function moveAliens() {
-        // move aliens according to dx and dy
+      }, 20);
+      // change alien's direction periodically
+      setInterval(function () {
+        var aliens = document.getElementsByClassName("alien");
+        for (let i = 0; i < aliens.length; i++) {
+          setAlienDirection(aliens[i]);
+        }
+      }, 2000);
+      // change alien's position w.r.t. speed and direction periodically
+      setInterval(function () {
         var aliens = document.getElementsByClassName("alien");
         var dx = 0;
         var dy = 0;
@@ -93,10 +167,15 @@
             node.style.top = String(y + dy) + "px";
           }
         }
-      }
-
-      setInterval(directAliens, 2000);
-      setInterval(moveAliens, 41);
+      }, 41);
+      // add aliens periodically
+      setInterval(function() {
+        if (numAliens > 7)
+          return;
+        var colors = ["Blue", "Green", "Pink", "Yellow", "Beige"];
+        let i = Math.floor(Math.random() * 5);
+        addAlien(colors[i]);
+      }, 1200)
     </script>
   </body>
 </html>
