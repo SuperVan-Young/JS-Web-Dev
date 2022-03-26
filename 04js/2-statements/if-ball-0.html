@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>移动的小球</title>
+    </head>
+    <body>
+    <style>
+div {
+  width:100px;height:100px;
+  border-radius:50%;
+  background-image:radial-gradient(at 35px 35px,#FFF,#CCC,#FFF);
+  position: absolute;
+}
+</style>
+
+<div id="ball"></div>
+
+<script type="text/javascript">
+
+	var x=0; 
+	var delt = 10;
+	setInterval(function(){
+		var ball = document.getElementById("ball");
+		ball.style.left = x + "px";
+		x+=delt;
+	},100);
+	
+</script>
+
+    </body>
+</html>

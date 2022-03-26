@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动出题并判分</title>
+</head>
+<body>
+	<div>
+		<span id="lblA"> </span>
+		<span id="lblOp"> </span>
+		<span id="lblB"> </span>
+		=
+		<input id="txtAnswer" onkeyup="check2()" />
+	</div>
+	<div>
+		<button onclick="newEq()">出题</button>
+		<button onclick="checkEq()">判分</button>
+	</div>
+	<div id="divHistory">
+	</div>
+
+	<script>
+		var a, b, op, result;
+		function newEq(){
+			a = parseInt(Math.random()*10+1);
+			b = parseInt(Math.random()*10+1);
+			var c = Math.random();
+			if( c<0.25) { op="+"; result=a+b; }
+			else if( c<0.5) { op="-"; result=a-b; }
+			else if( c<0.75) { op="*"; result=a*b; }
+			else { op="/"; result=a/b; }
+
+			document.getElementById("lblA").innerHTML = a;
+			document.getElementById("lblB").innerHTML = b;
+			document.getElementById("lblOp").innerHTML = op;
+		}
+
+		function checkEq(){
+			var answer = document.getElementById("txtAnswer").value;
+			var record = a + op + b + "=" + answer;
+			if(answer==result){ // if(Math.abs(answer-result)<1e-3)
+				record += " ok!";
+			}else{
+				record += " err!";
+			}
+			document.getElementById("divHistory").innerHTML += record+"<br/>";
+		}
+
+		function check2(){
+			var answer = document.getElementById("txtAnswer").value;
+			console.log(answer);
+			console.log(result);
+			console.log(Math.abs(answer-result)<1e-3);
+			
+			 if(Math.abs(answer-result)<1e-3){
+				document.getElementById("txtAnswer").style.backgroundColor="yellow";
+				
+			}else{
+				document.getElementById("txtAnswer").style.backgroundColor="white";
+				
+			}
+		}
+
+
+	</script>
+		
+</body>
+</html>

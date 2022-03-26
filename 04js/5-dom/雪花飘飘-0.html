@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>雪花飘飘</title>
+</head>
+<style>
+	* {margin:0; padding:0; vertical-align:top;}
+	.xue{position:absolute; color:#fff; font-size:48px;}
+
+	.inputdiv{
+		position:absolute; top:0px; left:300px; 
+		width: 200px; height:30px; z-index:5;
+		border:1px #000 solid;background:#fff;
+	}
+</style>
+<body>
+	<div id="box" style="width:1000px; height:600px; position:relative; border:1px red solid;background:#000; overflow:hidden;"></div>
+
+	<div class="inputdiv">
+		<input  id="wind_level" value="4" />级风
+	</div>
+
+	<script>
+		var box = document.getElementById("box");
+		function createSnow(){
+			//创建一个div
+			var a = document.createElement("div");
+			a.innerHTML = '.';
+			a.id = "xue" + i;
+			a.className = "xue";
+			a.style.top = parseInt(box.style.height) * Math.random() + 'px';
+			a.style.left = parseInt(box.style.width) * Math.random() + 'px';
+			box.appendChild(a);
+
+			//使之动起来
+			setInterval( function(){
+				a.style.top = parseInt(a.style.top) + Math.random()*40 + "px";
+				var wind = document.getElementById('wind_level').value;
+				//console.log(wind);
+				a.style.left = parseInt(a.style.left) + Math.random()*parseInt(wind)-2 + "px";
+				if(parseInt(a.style.top)>parseInt(box.style.height)) a.style.top="-10px";
+				//console.log("top" + a.style.top);
+			}, 100);
+		}
+
+		//创建多个雪片
+
+		for(var i=0;i<100; i++)  createSnow(); 
+
+	</script>
+</body>
+</html>

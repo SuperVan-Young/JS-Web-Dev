@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<title>周期执行某项任务</title>
+		<style>
+		#mydiv{
+			position: absolute;
+			background-color: yellow;
+			padding: 30px;
+		}
+		</style>
+    </head>
+    <body>
+    <div id="mydiv" ></div>
+
+    <script>
+    	
+		var i=10; //变量
+		function myfun(){
+			var mydiv = document.getElementById('mydiv');
+			mydiv.innerHTML=new Date();
+			mydiv.style.left= i + "px"; 
+			mydiv.style.top= (i/2) + "px"; 
+			mydiv.style.color = "rgb(" + i + ",0,0)";
+			i += 10;  // 即 i = i+10;
+		}
+
+		//myfun(); //执行一次
+
+    	setInterval( myfun, 100); //周期执行
+
+    </script>
+	
+    </body>
+</html>

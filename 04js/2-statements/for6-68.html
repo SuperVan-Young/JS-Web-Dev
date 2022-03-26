@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    	var s=0;
+    	for(var i=6; i<=69; i++){
+    		s += i*i*i;
+    	}
+    	document.write(Math.pow(s,1/3));
+		document.write("<br>");
+
+		var a = Math.round(Math.pow(s,1/3));
+    	document.write(a);
+		if( a*a*a == s )alert("ok");
+
+		document.write("<br>");
+    	document.write(parseInt(Math.pow(s,1/3)));
+    </script>
+    </body>
+</html>

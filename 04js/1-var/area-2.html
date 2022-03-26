@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>计算圆的面积--使用界面对象</title>
+</head>
+
+<body>
+	半径<input id="txtR" />
+	<button onclick="calcu()">计算</button>
+	<span id="lblArea"></span>
+
+	<script type="text/javascript">
+	function calcu(){
+		//var r = prompt("请输入半径")
+		var r=document.getElementById("txtR").value;
+		r = parseFloat(r); //转成实数，如果不转也是可以的
+
+		var Pi = 3.14;
+		var area = Pi * r * r;
+		//alert ("半径为" + r + "的圆的面积是" + area );
+		document.getElementById('lblArea').innerHTML = "半径为" + r + "的圆的面积是" + Math.round(area*100)/100;
+		//document.write(area);
+		//console.log(area);
+	}
+	</script>
+</body>
+</html>

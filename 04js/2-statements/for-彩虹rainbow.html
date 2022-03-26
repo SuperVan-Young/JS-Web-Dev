@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>使用for语句生成彩虹</title>
+        <style>
+            div{width:2px; height:50px; float:left;}
+        </style>
+    </head>
+    <body>
+    <div id="box"></div>
+    <script>
+
+    for(var i=0; i<360; i++){
+        document.write("<div style='background-color:hsl("+i+",100%,50%)'></div>");
+    }
+
+    </script>
+    </body>
+</html>

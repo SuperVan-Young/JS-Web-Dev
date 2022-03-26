@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>了解变量的作用域</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var r = 5;
+		console.log(r); //5
+		console.log(window.r); //5
+
+		function f(){
+			console.log(r); //undefine //这是由于作用域提升
+			console.log(window.r); //5
+			{   //{}进入新的作用域
+				var r = 6; 
+				console.log(r); //6
+			}
+			console.log(r); //5
+		}
+		f();
+	</script>
+
+	<script>
+		console.log(r); //5
+		console.log(window.r); //5
+	</script>
+</body>
+</html>

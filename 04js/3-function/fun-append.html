@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div id="box"></div>
+    <script>
+
+
+function append( html, css, top) {
+	var obj = document.createElement('div');
+	obj.innerHTML = html;
+	obj.style.cssText = css;
+	obj.style.position="absolute";
+    obj.style.top = top + "px";
+	document.getElementById('box').appendChild(obj);
+	//document.getElementsByName('body')[0].appendChild(obj);
+}
+
+
+append("aaaaaaaaaaaaaa", "color:red; background-color:yellow;", 10);
+append("ppp", "color:blue", 30);
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>检查输入有效性</title>
+    </head>
+    <body>
+
+	数值<input id="txtR" type="text"/>
+	<button onclick="calcu()">计算平方根</button>
+	<span id="lbl"></span>
+
+	<script type="text/javascript">
+	function calcu(){
+		var r=document.getElementById("txtR").value;
+
+		if(r==="" || r<=0){
+			alert("请输入一个正数");
+		}else{
+			document.getElementById('lbl').innerHTML =  r + "的平方根是" + Math.sqrt(r);
+		}
+	}
+	</script>
+
+    </body>
+</html>

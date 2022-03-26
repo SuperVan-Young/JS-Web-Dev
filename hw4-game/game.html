@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #canvas {
+        background-color: black;
+        margin: 0 auto;
+        width: 1200px;
+        height: 800px;
+      }
+
+      .alien {
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="canvas"></div>
+
+    <script type="text/javascript">
+      var xInit = 0;
+      var yInit = 0;
+      function addAlien(alienColor) {
+        var node = document.createElement("div");
+        node.className = "alien";
+
+        // set alien's ship picture
+        alienImg = "src/PNG/ship" + alienColor + ".png";
+        node.style.backgroundImage = "url(" + alienImg + ")";
+
+        // set initial position (within the canvas)
+        xInit = Math.floor(Math.random() * (1200 - 100));
+        yInit = Math.floor(Math.random() * (800 - 100));
+        node.style.left = xInit + "px";
+        node.style.top = yInit + "px";
+
+        document.getElementById("canvas").appendChild(node);
+      }
+      addAlien("Blue");
+
+      function directAliens() {
+        // change alien's direction
+        var aliens = document.getElementsByClassName("alien");
+        var node;
+        var dx = 0;
+        var dy = 0;
+        var x = 0;
+        var y = 0;
+        var dmax = 10;
+        for (let i = 0; i < aliens.length; i++) {
+          // set a random direction and speed for aliens
+          node = aliens[i];
+          dx = Math.floor(Math.random() * 2 * dmax) - dmax;
+          dy = Math.floor(Math.random() * 2 * dmax) - dmax;
+          node.setAttribute("dx", dx);
+          node.setAttribute("dy", dy);
+        }
+      }
+
+      function moveAliens() {
+        // move aliens according to dx and dy
+        var aliens = document.getElementsByClassName("alien");
+        var dx = 0;
+        var dy = 0;
+        var x = 0;
+        var y = 0;
+        for (let i = 0; i < aliens.length; i++) {
+          // set a random direction and speed for aliens
+          node = aliens[i];
+          dx = parseInt(node.getAttribute("dx"));
+          dy = parseInt(node.getAttribute("dy"));
+          x = parseInt(node.style.left);
+          y = parseInt(node.style.top);
+          if (x + dx < 0 || x + dx >= 1200 - 100) {
+            node.setAttribute("dx", -dx);
+          } else {
+            node.style.left = String(x + dx) + "px";
+          }
+          if (y + dy < 0 || y + dy >= 800 - 100) {
+            node.setAttribute("dy", -dy);
+          } else {
+            node.style.top = String(y + dy) + "px";
+          }
+        }
+      }
+
+      setInterval(directAliens, 2000);
+      setInterval(moveAliens, 41);
+    </script>
+  </body>
+</html>
