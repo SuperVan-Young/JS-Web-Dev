@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        background-color: rgb(211, 204, 204);
+      }
+      #coverlayer {
+        background-color: rgba(12, 12, 12, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100px;
+      }
+
+      #exit {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 1);
+        margin: 25% auto 25% auto;
+        height: 500px;
+        width: 500px;
+        z-index: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        justify-items: space-around;
+      }
+
+      #exit div {
+        margin: 0 auto;
+        font-size: 3em;
+        color: black;
+      }
+
+      #exit button {
+        margin: 0 auto;
+        font-size: 1.5em;
+        width: 100px;
+      }
+
+      .boardWrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #scoreboard {
+        margin: 0 auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 800px;
+
+        text-align: right;
+        font-size: 2em;
+        font-style: italic;
+      }
+
+      .optionboard {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: space-between;
+        width: 800px;
+        height: 250px;
+      }
+
+      .option {
+        display: inline-block;
+        width: 150px;
+        height: auto;
+        text-align: center;
+        font-size: 2em;
+      }
+
+      #notice {
+        margin: 0 auto;
+        width: 800px;
+        color: red;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      /* options */
+      .img {
+        background: url(./img.jpg) no-repeat;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        margin-bottom: 20px;
+        border-style: dashed;
+        border-color: rgba(247, 243, 31, 0.863);
+        border-width: 1px;
+
+        animation: imgshadow 1s linear infinite alternate;
+      }
+      .img:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+      @keyframes imgshadow {
+        0% {
+          box-shadow: 5px 5px 5px rgba(247, 243, 31, 0.85);
+        }
+        50% {
+          box-shadow: 5px 5px 5px rgba(247, 128, 31, 0.85);
+        }
+        100% {
+          box-shadow: 5px 5px 5px rgba(247, 31, 31, 0.85);
+        }
+      }
+
+      .rock {
+        background-position: -240px -226px;
+      }
+      .scissors {
+        background-position: -9px -225px;
+      }
+      .paper {
+        background-position: -460px -223px;
+      }
+    </style>
+
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <script>
+      var score = 0;
+      function play(playerOption) {
+        var aiOption = Math.floor(Math.random() * 3);
+        var strAiOption = "";
+        switch (aiOption) {
+          case 0:
+            strAiOption = "石头";
+            break;
+          case 1:
+            strAiOption = "剪刀";
+            break;
+          case 2:
+            strAiOption = "布";
+            break;
+        }
+        if ((playerOption + 1) % 3 == aiOption) {
+          score += 1;
+          document.getElementById("scoreboard").innerHTML =
+            "Total Score: " + score;
+          document.getElementById("notice").innerHTML =
+            "你的对手出" + strAiOption + "，你赢了！";
+        } else if (playerOption == aiOption) {
+          document.getElementById("notice").innerHTML =
+            "你的对手出" + strAiOption + "，平局！";
+        } else {
+          score -= 1;
+          if (score < 0) score = 0;
+          document.getElementById("scoreboard").innerHTML =
+            "Total Score: " + score;
+          document.getElementById("notice").innerHTML =
+            "你的对手出" + strAiOption + "，你输了！";
+        }
+        if (score == 3) {
+          document.getElementById("coverlayer").style.display = "";
+        }
+      }
+
+      function closeGame() {
+        window.close();
+      }
+    </script>
+    <div id="coverlayer" style="display: none">
+      <div id="exit">
+        <div>游戏结束</div>
+        <button onclick="closeGame()">退出</button>
+      </div>
+    </div>
+
+    <div class="boardWrapper">
+      <div id="scoreboard">Total Score: 0</div>
+      <div class="optionboard">
+        <div class="option">
+          <div class="img rock" onclick="play(0)"></div>
+          石头
+        </div>
+        <div class="option" onclick="play(1)">
+          <div class="img scissors"></div>
+          剪刀
+        </div>
+        <div class="option" onclick="play(2)">
+          <div class="img paper"></div>
+          布
+        </div>
+      </div>
+      <div id="notice">尝试连赢三局！</div>
+    </div>
+  </body>
+</html>
