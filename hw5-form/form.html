@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 auto;
+      }
+
+      body {
+        background-color: #ffcc99;
+      }
+
+      header {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 3em;
+        background-color: #99cc99;
+      }
+      div {
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: #99cc99;
+      }
+
+      form {
+        margin: 0 auto;
+        margin-top: 3em;
+        width: 800px;
+      }
+
+      form fieldset {
+        background-color: #ffff99;
+      }
+
+      form fieldset label {
+        display: inline-block;
+        width: 200px;
+        text-align: right;
+        line-height: 1.5rem;
+      }
+
+      form fieldset span {
+        display: inline-block;
+        text-align: center;
+        width: 50px;
+      }
+
+      form fieldset input {
+        width: 400px;
+      }
+
+      form fieldset input[type="radio"] {
+        width: auto;
+      }
+
+      form fieldset input[type="date"] {
+        width: 403px;
+      }
+
+      form fieldset select {
+        width: 408px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>电竞社第X届校内比赛报名</header>
+
+    <div>
+      2022年4月3日至5日,每天下午三点准时开战,一起来玩!<br />
+      (本次活动规模有限, 每名同学至多报名参加一项比赛)
+    </div>
+
+    <form
+      name="myForm"
+      action="https://httpbin.org/post"
+      method="post"
+      onsubmit="return check()"
+    >
+      <fieldset>
+        <legend>报名信息</legend>
+
+        <!-- 报名者基本信息 -->
+        <label for="username">姓名:</label>
+        <input type="text" name="username" required />
+        <br />
+
+        <label for="id">学号:</label>
+        <input type="text" name="id" required pattern="[0-9]{10}" />
+        <br />
+
+        <label for="phone">电话:</label>
+        <input type="text" name="phone" required pattern="[0-9]{11}" />
+        <br />
+
+        <label for="age">年龄:</label>
+        <input type="number" name="age" min="3" max="99" />
+        <br />
+
+        <label for="gender">性别:</label>
+        <span>男</span>
+        <input type="radio" name="gender" value="1" />
+        <span>女</span>
+        <input type="radio" name="gender" value="2" />
+        <br />
+
+        <datalist id="departmentList">
+          <option value="信科"></option>
+          <option value="数院"></option>
+          <option value="物院"></option>
+          <option value="化院"></option>
+          <option value="元培"></option>
+        </datalist>
+
+        <label for="department">院系:</label>
+        <input type="text" name="department" list="departmentList" />
+        <br />
+
+        <label for="grade">年级:</label>
+        <select name="grade" size="4">
+          <option>大一</option>
+          <option>大二</option>
+          <option>大三</option>
+          <option>大四</option>
+        </select>
+        <br />
+
+        <!-- 活动参与信息 -->
+        <label for="event">参加项目</label>
+        <select name="event" size="4" required>
+          <option>王者荣耀</option>
+          <option>英雄联盟</option>
+          <option>炉石传说</option>
+          <option>星际争霸2</option>
+        </select>
+        <br />
+
+        <label for="time">参与日期</label>
+        <input type="date" name="time" required />
+        <br />
+
+        <label for="schedule">参与场次</label>
+        <select name="schedule" size="3" required>
+          <option>第一场(15:00~17:00)</option>
+          <option>第二场(17:00~19:00)</option>
+          <option>第三场(19:00~21:00)</option>
+        </select>
+        <br />
+
+        <!-- 能力信息 -->
+        <label for="volunteer">是否有意愿担任志愿者:</label>
+        <span>是</span>
+        <input type="radio" name="volunteer" value="1" />
+        <span>否</span>
+        <input type="radio" name="volunteer" value="0" />
+        <br />
+
+        <label for="expectation">你对活动的期待:</label>
+        <textarea
+          name="expectation"
+          wrap="soft"
+          cols="55"
+          rows="10"
+          placeholder="写下你对活动的期待吧"
+          maxlength="200"
+        ></textarea>
+      </fieldset>
+      <button type="submit">提交</button>
+      <button type="reset">重置表单</button>
+
+      <script>
+        function check() {
+          var form = document.forms.myForm;
+          var date = Date.parse(form.time.value);
+          var start = Date.parse("4/3/2022");
+          var end = Date.parse("4/6/2022");
+          if (date < start || date > end) {
+            alert(form.time.value + "不在有效时间内!");
+            return false;
+          }
+          return true;
+        }
+      </script>
+    </form>
+  </body>
+</html>

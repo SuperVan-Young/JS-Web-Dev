@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>radio定制</title>
+        <style>
+
+
+input[type=radio] {
+    -webkit-appearance: none;
+    background-color: #791b1b;
+    border: 1px solid #9d9d9d;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05),inset 0 15px 10px -12px rgba(0,0,0,.25);
+    padding: 14px;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    outline: none;
+}
+
+input[type=radio]:checked {
+    background-color: #e9ecee;
+    border: 1px solid #9d9d9d;
+    color: #99a1a7;
+    outline: none;
+}
+
+input[type=radio]:checked:after {
+    content: ' ';
+    width: 18px;
+    height: 18px;
+    border-radius: 50px;
+    position: absolute;
+    top: 5px;
+    background: #99a1a7;
+    box-shadow: inset 0 0 10px rgba(0,0,0,.3);
+    text-shadow: 0;
+    left: 5px;
+    font-size: 32px;
+}
+
+
+
+        </style>
+    </head>
+    <body>
+
+    <input type=radio name=aaa checked>
+    <input type=radio name=aaa >
+    </body>
+</html>

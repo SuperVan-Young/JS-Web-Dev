@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  /* 使用属性选择器 及 伪类focus */
+  input[type=text]{background-color:#eee; border:none;}
+  input[type=text]:focus{background-color:yellow; border-bottom: 1px solid red;}
+
+  /* 使用checked及+实现click效果 */
+  input[type=checkbox]{display:none;}
+  input:checked{background-color:yellow;}
+  input:checked+label {background-color:red;}
+
+  /* 使用nth-child */
+  li:nth-child(1){background-color:#FF0;}
+  li:nth-child(2){background-color:red;}
+  
+
+  </style>
+ </head>
+ <body>
+  <input type=text placehold="focus to change color">
+
+  <br/>
+  <input type=checkbox id="c1" name="r"></input><label for="c1">click here to toggle color</label>
+
+  <ul>
+  <li>aaaaaa</li>
+  <li>bbb</li>
+  </ul>
+
+ </body>
+</html>

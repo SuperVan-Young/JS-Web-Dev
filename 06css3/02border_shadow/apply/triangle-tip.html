@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用css实现带三角形的提示框</title>
+
+	<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: grey;
+    }
+
+    /*提示框容器*/
+    .tip {
+        position: relative;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 200px;
+        background: #fff;
+        padding: 10px;
+        /*设置圆角*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    /*提示框-左三角*/
+    .tip-trangle-left {
+        position: absolute;
+        bottom: 15px;
+        left: -10px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid #fff;
+    }
+
+    /*提示框-右三角*/
+    .tip-trangle-right {
+        position: absolute;
+        top: 15px;
+        right: -10px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #fff;
+    }
+
+    /*提示框-上三角*/
+    .tip-trangle-top {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #fff;
+    }
+
+    /*提示框-下三角*/
+    .tip-trangle-bottom {
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid #fff;
+    }
+
+ </style>
+</head>
+<body>
+
+<div class="tip">
+    <div class="tip-trangle-left"></div>
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip">
+    <div class="tip-trangle-right"></div>
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip">
+    <div class="tip-trangle-top"></div>
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip">
+    <div class="tip-trangle-bottom"></div>
+    我是提示框<br/>
+    内容可以自定义
+</div>
+	
+</body>
+</html>

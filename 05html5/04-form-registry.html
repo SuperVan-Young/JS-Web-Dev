@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>简单的注册页</title>
+    <style>
+        form table {border-collapse: collapse;}
+        form table td{border: 1px solid #ddd; }
+    </style>
+</head>
+
+<body>
+    <form action="https://httpbin.org/post" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td><input type="text" name="username" /></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="pwd" /></td>
+            </tr>
+            <tr>
+                <td>个人描述</td>
+                <td><textarea rows=3 cols=40></textarea></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td> 
+                    <input type="radio" name="gender" value="male">男
+                    <input type="radio" name="gender" value="female">女
+                    <input type="radio" name="gender" value="novalue">保密
+                </td>
+            </tr>
+            <tr>
+                <td>年级</td>
+                <td>
+                    <select name="grade">
+                        <option value="1" >一年级</option>
+                        <option value="2" >二年级</option>
+                        <option value="3" >三年级</option>
+                        <option value="4" >四年级</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>兴趣爱好</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="football">足球
+                    <input type="checkbox" name="hobby" value="basketball">篮球
+                    <input type="checkbox" name="hobby" value="volleyball">排球
+                    <input type="checkbox" name="hobby" value="pingpang">乒乓球
+                </td>
+            </tr>
+            <tr>
+                <td>照片</td>
+                <td>
+                    <input type="file" name="photo">
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <input type=submit value="确定" />
+                    <input type=reset value="取消">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

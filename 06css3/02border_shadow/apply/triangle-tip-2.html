@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用css实现带三角形的提示框</title>
+
+	<style>
+body {
+        margin: 0;
+        padding: 0;
+        background: grey;
+    }
+
+    /*提示框容器-上三角形*/
+    .tip-top {
+        margin: 20px;
+        padding: 5px;
+        width: 300px;
+        height: 60px;
+        border: 2px solid #f99;
+        position: relative;
+        background-color: #FFF;
+        /*设置圆角*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    /*生成2个叠加的三角形*/
+    .tip-top:before, .tip-top:after {
+        content: "";
+        display: block;
+        border-width: 15px;
+        position: absolute;
+        top: -30px;
+        left: 100px;
+        border-style: solid dashed dashed solid;
+        border-color: transparent transparent #f99 transparent;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    /*将上面的三角形颜色设置和容器背景色相同*/
+    .tip-top:after {
+        top: -27px;
+        border-color: transparent transparent #FFF transparent;
+    }
+
+    /*下三角*/
+    .tip-bottom {
+        margin: 20px;
+        padding: 5px;
+        width: 300px;
+        height: 60px;
+        border: 2px solid #f99;
+        position: relative;
+        background-color: #0FF;
+        /*设置圆角*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .tip-bottom:before, .tip-bottom:after {
+        content: "";
+        display: block;
+        border-width: 15px;
+        position: absolute;
+        bottom: -30px;
+        left: 100px;
+        border-style: solid dashed dashed solid;
+        border-color: #f99 transparent transparent transparent;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .tip-bottom:after {
+        bottom: -27px;
+        border-color: #0FF transparent transparent transparent;
+    }
+
+    /*左三角*/
+    .tip-left {
+        margin: 20px;
+        padding: 5px;
+        width: 300px;
+        height: 60px;
+        border: 2px solid #f99;
+        position: relative;
+        background-color: #FFF;
+        /*设置圆角*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .tip-left:before, .tip-left:after {
+        content: "";
+        display: block;
+        border-width: 15px;
+        position: absolute;
+        left: -30px;
+        top: 20px;
+        border-style: dashed solid solid dashed;
+        border-color: transparent #f99 transparent transparent;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .tip-left:after {
+        left: -27px;
+        border-color: transparent #FFF transparent transparent;
+    }
+
+    /*右三角*/
+    .tip-right {
+        margin: 20px;
+        padding: 5px;
+        width: 300px;
+        height: 60px;
+        border: 2px solid #f99;
+        position: relative;
+        background-color: #FFF;
+        /*设置圆角*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .tip-right:before, .tip-right:after {
+        content: "";
+        display: block;
+        border-width: 15px;
+        position: absolute;
+        right: -30px;
+        top: 20px;
+        border-style: dashed solid solid dashed;
+        border-color: transparent transparent transparent #f99;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .tip-right:after {
+        right: -27px;
+        border-color: transparent transparent transparent #FFF;
+    }
+
+ </style>
+</head>
+<body>
+
+<div class="tip-top">
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip-bottom">
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip-left">
+    我是提示框<br/>
+    内容可以自定义
+</div>
+<div class="tip-right">
+    我是提示框<br/>
+    内容可以自定义
+</div>
+	
+</body>
+</html>

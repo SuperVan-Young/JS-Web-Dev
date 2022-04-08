@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用border显示优惠券</title>
+	<style>
+	.card{ 
+		position:relative; 
+		margin: 20px; padding: 30px;
+		background-color: #a00; height:300px;
+	}
+	.card::before, .card::after{
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 20px;
+		display: block;
+		background: linear-gradient( -45deg, transparent 33.333%, #fff 33.333%, #fff 66.666%,
+		transparent 66.666%) ,
+		linear-gradient( 45deg, transparent 33.333%, #fff 33.333%, #fff 66.666%, transparent 66.666%);
+		background-size: 30px 60px;
+	}
+	.card::after{
+		bottom: 0;
+	}
+	.card::before{ 		
+		top: 0;
+		transform: rotate(180deg);
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="card">
+	 卡片
+	</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用css实现三角形</title>
+
+	<style>
+
+/* 正三角 */
+.up-triangle {
+   width: 0;
+   height: 0;
+   border-style: solid;
+   border-width: 0 25px 40px 25px;
+   border-color: transparent transparent rgb(245, 129, 127) transparent;
+ }
+ 
+ /* 倒三角 */
+ .down-triangle {
+   width: 0;
+   height: 0;
+   border-style: solid;
+   border-width: 40px 25px 0 25px;
+   border-color:  rgb(245, 129, 127) transparent transparent transparent;
+ }
+ div:last-child {
+   margin-top: 1rem;
+ }	
+ </style>
+</head>
+<body>
+
+<div class="up-triangle"></div>
+<div class="down-triangle"></div>
+	
+</body>
+</html>

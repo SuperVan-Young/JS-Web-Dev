@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>表单验证</title>
+</head>
+<body>
+	<form name="myForm" onsubmit="return check()"> 
+		<label for="username">username:</label>
+		<input type="text" name="username"/>
+		<br />
+		<label for="email">E-mail:</label>
+		<input type="text" name="email"/>
+		<br />
+		<button type="submit">提交</button> 
+	</form> 
+	<script> 
+		function check() { 
+			var form = document.forms.myForm;
+			var emailTxt = form.email.value; 
+			if(emailTxt == "") { 
+				alert("请输入E-mail地址！"); 
+				return false; 
+			} 
+			return true; 
+		} 
+	</script> 
+
+</body>
+</html>

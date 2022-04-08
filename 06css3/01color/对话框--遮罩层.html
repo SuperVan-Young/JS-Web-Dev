@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.modal{
+	}
+	.cover{ 
+		background-color: #121212; 
+		z-index: 3000;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: .3;
+		margin: 0;
+	}
+	.wrapper{
+		background-color: #fff;
+		z-index:10000;
+		position:fixed;
+		top: 50%;
+		left: 50%;
+		width:360px;
+		margin-left: -180px; 
+		margin-top: -90px;
+		max-width: 98%;
+		padding: 20px 10px;
+	}
+	.closebtn{
+		position:absolute;
+		top: 3px;
+		right: 10px;
+		content: "x";
+		padding: 5px;
+		cursor: pointer;
+	}
+	.content{
+		min-width: 300px;
+		min-height: 150px;
+		width: 400px;
+		margin: 0 auto;
+	}
+
+</style>
+<body>
+	这是网内容
+	<button onclick="openDialog()">打开对话框</button>
+
+
+	<div class="modal" id="modal" style="display:none">
+		<div class="cover"></div>
+		
+		<div class="wrapper">
+			<div class="closebtn" onclick="closeDialog()">x</div>
+			<hr />
+			<div class="content">
+				这是内容
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function openDialog(){
+			document.getElementById('modal').style.display='';
+		}
+		function closeDialog(){
+			document.getElementById('modal').style.display='none';
+		}
+	  //document.getElementById('modal').style.display='none';
+	</script>
+</body>
+
+</html>

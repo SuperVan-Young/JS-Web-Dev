@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用border显示优惠券</title>
+	<style>
+.coupon {
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  /* 下面的背景由4个部分组成，其中用径向渐变来实现透明的缺口。你可以注释掉其中间两个来观察理解 */
+  background: radial-gradient(circle at right bottom, transparent 10px, #ffffff 0) top right /50% 51px no-repeat,
+  radial-gradient(circle at left bottom, transparent 10px, #ffffff 0) top left / 50% 51px no-repeat,
+  radial-gradient(circle at right top, transparent 10px, #ffffff 0) bottom right / 50% 51px no-repeat,
+  radial-gradient(circle at left top, transparent 10px, #ffffff 0) bottom left / 50% 51px no-repeat;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, .6)); /* 由于前面用透明来实现的，所以这里不能用border来实现 */
+}
+.coupon span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  color: red;
+  font-size: 50px;
+  font-weight: 400;
+}
+body{background-color: pink;}
+</style>
+</head>
+<body>
+	<p class="coupon">
+	 <span>200</span>优惠券
+	</p>
+</body>
+</html>

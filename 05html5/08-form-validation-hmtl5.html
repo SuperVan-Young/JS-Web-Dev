@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>表单验证</title>
+	<style>
+		label{ display: inline-block; width:100px; 
+			text-align: right; line-height: 1.5rem}
+	</style>
+</head>
+<body>
+	<form name="myForm"> 
+		<label for="username" >username:</label>
+		<input type="text" name="username" required/>
+		<br />
+
+		<label for="pwd" >password:</label>
+		<input type="password" name="pwd" required/>
+		<br />
+
+		<label for="age" required>age:</label>
+		<input type="number" name="age"/>
+		<br />
+
+		<label for="email">E-mail:</label>
+		<input type="email" name="email"/>
+		<br />
+		<button type="submit">提交</button> 
+	</form> 
+
+	<form name="register1" id="register1">
+          <p><label for="runnername">RunnerName:</label>
+             <input id="runnername"name="runnername" type="text" placeholder="First and last name" required="required" autofocus="autofocus"/>
+          </p>
+          <p><label for="phone">Tel #:</label>
+             <input id="phone" name="phone" type="text" pattern="\d{3}-\d{4}-\d{4}"
+                    placeholder="xxx-xxxx-xxxx"/>
+          </p>
+          <p><label for="emailaddress">E-mail:</label>
+             <input id="emailaddress" name="emailaddress" type="email" 
+                    placeholder="For confirmation only"/>
+          </p>
+          <p><label for="dob">DOB:</label>
+             <input id="dob" name="dob" type="date"
+                    placeholder="MM/DD/YYYY"/></p>
+          <p><label for="count">Count:</label>
+          <input type="number" id="count" name="count" min="0" max="100" step="10"/></p>
+          <p><label for="style">Shirt style:</label>
+               <input id="style" name="style" type="text" list="stylelist" title="Years of participation" 
+                autocomplete="off"/>
+             <datalist id="stylelist">
+             <option value="White" label="1st Year"/>
+             <option value="Gray" label="2nd - 4th Year"/>
+             <option value="Navy" label="Veteran (5+ Years)"/>
+            </datalist>
+          </p>
+          
+         <fieldset>
+            <legend>Expectations:</legend>
+            <p>
+            <label for="confidence">Confidence:</label>
+            <input id="confidence" name="level" type="range"
+                   onchange="setConfidence(this.value)"
+                   min="0" max="100" step="5" value="0"/>
+            <span id="confidenceDisplay">0%</span></p>
+            <p><label for="notes">Notes:</label>
+               <textarea id="notes" name="notes" maxLength="100"></textarea></p>
+         </fieldset>
+ 
+         <p><input type="submit" name="register" value="Submit"/></p>
+        </form>
+
+
+</body>
+</html>
