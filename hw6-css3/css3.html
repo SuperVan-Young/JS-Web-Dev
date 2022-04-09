@@ -17,7 +17,7 @@
         margin: 0;
         width: 100%;
         height: 100%;
-        z-index: 100px;
+        z-index: 100;
       }
 
       #exit {
@@ -26,11 +26,10 @@
         margin: 25% auto 25% auto;
         height: 500px;
         width: 500px;
-        z-index: 200px;
+        z-index: 200;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        justify-items: space-around;
       }
 
       #exit div {
@@ -66,7 +65,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        justify-items: space-between;
         width: 800px;
         height: 250px;
       }
@@ -97,8 +95,6 @@
         border-style: dashed;
         border-color: rgba(247, 243, 31, 0.863);
         border-width: 1px;
-
-        animation: imgshadow 1s linear infinite alternate;
       }
       .img:hover {
         transform: scale(1.05);
@@ -114,6 +110,9 @@
         100% {
           box-shadow: 5px 5px 5px rgba(247, 31, 31, 0.85);
         }
+      }
+      .animeshadow {
+        animation: imgshadow 1s linear;
       }
 
       .rock {
@@ -133,6 +132,9 @@
     <script>
       var score = 0;
       function play(playerOption) {
+        var node = document.getElementsByClassName("img")[playerOption]
+        node.classList.add("animeshadow");
+        setTimeout(function() {node.classList.remove("animeshadow");}.bind(node), 1000);
         var aiOption = Math.floor(Math.random() * 3);
         var strAiOption = "";
         switch (aiOption) {
@@ -186,12 +188,12 @@
           <div class="img rock" onclick="play(0)"></div>
           石头
         </div>
-        <div class="option" onclick="play(1)">
-          <div class="img scissors"></div>
+        <div class="option" >
+          <div class="img scissors" onclick="play(1)"></div>
           剪刀
         </div>
-        <div class="option" onclick="play(2)">
-          <div class="img paper"></div>
+        <div class="option">
+          <div class="img paper" onclick="play(2)"></div>
           布
         </div>
       </div>
