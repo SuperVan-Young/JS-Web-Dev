@@ -13,7 +13,7 @@
 
     <script>
       (function () {
-        var msgs = new Map(); //使用Map数据结构
+		var msgs = [];
         var $ = function (sel) {
           return document.querySelector(sel);
         }; //选择器封装
@@ -24,7 +24,15 @@
           var name = $(".name").value;
           var msg = $(".message").value;
           if (!name || !msg) return;
-          msgs.set(name, msg); //加入map中
+		  //这里需要对name进行去重
+		  for (var i = 0; i < msgs.length; i++) {
+			if (msgs[i][0] == name) {
+			  msgs[i] = [name, msg];
+			  break;
+			}
+		  }
+		  if (i == msgs.length)
+		  	msgs.push([name, msg]);
           listShow(); //展示
           var txts = [$(".name"), $(".message")];
           for (var i = 0; i < txts.length; i++) {
@@ -35,10 +43,14 @@
         //展示信息
         var listShow = function () {
           var items = [];
-          var msgs_ = [...msgs].sort();
-          for (var i = 0; i < msgs.size; i++) {
-            var k = msgs_[i][0];
-            var v = msgs_[i][1];
+          msgs = msgs.sort(
+			  function (a, b) {
+				  return a[0] - b[0];
+			  }
+		  );
+          for (var i = 0; i < msgs.length; i++) {
+            var k = msgs[i][0];
+            var v = msgs[i][1];
             // for (var [k, v] of [...msgs].sort()) {
             //of遍历, 解构
             items.push(`<li class="list-group-item">
