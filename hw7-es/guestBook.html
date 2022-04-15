@@ -14,10 +14,12 @@
     <script>
       (function () {
         var msgs = new Map(); //使用Map数据结构
-        var $ = (sel) => document.querySelector(sel); //选择器封装
+        var $ = function (sel) {
+          return document.querySelector(sel);
+        }; //选择器封装
 
         //提交信息
-        $(".submit").addEventListener("click", () => {
+        $(".submit").addEventListener("click", function () {
           //箭头函数
           var [name, msg] = [$(".name").value, $(".message").value]; //解构
           if (!name || !msg) return;
@@ -25,12 +27,14 @@
           listShow(); //展示
           [$(".name"), $(".message")].forEach(
             //forEach遍历
-            (txt) => (txt.value = "") //清空文本框
+            function (txt) {
+              return (txt.value = "");
+            } //清空文本框
           );
         });
 
         //展示信息
-        var listShow = () => {
+        var listShow = function () {
           var items = [];
           for (var [k, v] of [...msgs].sort()) {
             //of遍历, 解构
