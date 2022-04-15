@@ -21,22 +21,25 @@
         //提交信息
         $(".submit").addEventListener("click", function () {
           //箭头函数
-          var [name, msg] = [$(".name").value, $(".message").value]; //解构
+          var name = $(".name").value;
+          var msg = $(".message").value;
           if (!name || !msg) return;
           msgs.set(name, msg); //加入map中
           listShow(); //展示
-          [$(".name"), $(".message")].forEach(
-            //forEach遍历
-            function (txt) {
-              return (txt.value = "");
-            } //清空文本框
-          );
+          var txts = [$(".name"), $(".message")];
+          for (var i = 0; i < txts.length; i++) {
+            txts[i].value = "";
+          } //清空文本框
         });
 
         //展示信息
         var listShow = function () {
           var items = [];
-          for (var [k, v] of [...msgs].sort()) {
+          var msgs_ = [...msgs].sort();
+          for (var i = 0; i < msgs.size; i++) {
+            var k = msgs_[i][0];
+            var v = msgs_[i][1];
+            // for (var [k, v] of [...msgs].sort()) {
             //of遍历, 解构
             items.push(`<li class="list-group-item">
 				${k}<span>说: </span>${v} 
