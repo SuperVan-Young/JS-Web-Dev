@@ -13,7 +13,7 @@
 
     <script>
       (function () {
-		var msgs = [];
+        var msgs = [];
         var $ = function (sel) {
           return document.querySelector(sel);
         }; //选择器封装
@@ -24,15 +24,14 @@
           var name = $(".name").value;
           var msg = $(".message").value;
           if (!name || !msg) return;
-		  //这里需要对name进行去重
-		  for (var i = 0; i < msgs.length; i++) {
-			if (msgs[i][0] == name) {
-			  msgs[i] = [name, msg];
-			  break;
-			}
-		  }
-		  if (i == msgs.length)
-		  	msgs.push([name, msg]);
+          //这里需要对name进行去重
+          for (var i = 0; i < msgs.length; i++) {
+            if (msgs[i][0] == name) {
+              msgs[i] = [name, msg];
+              break;
+            }
+          }
+          if (i == msgs.length) msgs.push([name, msg]);
           listShow(); //展示
           var txts = [$(".name"), $(".message")];
           for (var i = 0; i < txts.length; i++) {
@@ -43,11 +42,9 @@
         //展示信息
         var listShow = function () {
           var items = [];
-          msgs = msgs.sort(
-			  function (a, b) {
-				  return a[0] - b[0];
-			  }
-		  );
+          msgs = msgs.sort(function (a, b) {
+            return a[0] - b[0];
+          });
           for (var i = 0; i < msgs.length; i++) {
             var k = msgs[i][0];
             var v = msgs[i][1];
