@@ -21,7 +21,7 @@
         function startGame() {
             myGamePiece = new Component({width:30, height:30, color:"red", x:10, y:120});
             myGamePiece.gravity = 0.05;
-            myScore = new Component({width:"30px", height:"Consolas", color:"black", x:280, y:40, type:"text"});
+            myScore = new TextComponent({width:"30px", height:"Consolas", color:"black", x:280, y:40});
             myGameArea.start();
         }
 
@@ -42,8 +42,6 @@
 
         class Component {
             constructor(options) {
-                // width, height, color, x, y, type
-                this.type = options.type;
                 this.score = 0;
                 this.width = options.width;
                 this.height = options.height;
@@ -57,14 +55,8 @@
             }
             update () {
                 let ctx = myGameArea.context;
-                if (this.type == "text") {
-                    ctx.font = this.width + " " + this.height;
-                    ctx.fillStyle = this.color;
-                    ctx.fillText(this.text, this.x, this.y);
-                } else {
-                    ctx.fillStyle = this.color;
-                    ctx.fillRect(this.x, this.y, this.width, this.height);
-                }
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
             }
             newPos () {
                 this.gravitySpeed += this.gravity;
@@ -93,6 +85,15 @@
                     crash = false;
                 }
                 return crash;
+            }
+        }
+
+        class TextComponent extends Component {
+            update () {
+                let ctx = myGameArea.context;
+                ctx.font = this.width + " " + this.height;
+                ctx.fillStyle = this.color;
+                ctx.fillText(this.text, this.x, this.y);
             }
         }
 
