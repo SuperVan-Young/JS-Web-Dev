@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>求最大值、平均值</title>
+
+    </head>
+    <body>
+    <script type="text/javascript">
+    	var ages = [];
+		var len = 10;
+    	for( var i=0; i<len; i++){
+    		ages[i] = parseInt(Math.random()*100, 10);
+			// ages.push(parseInt(Math.random()*100));
+    	}
+
+        var m = ages[0];
+        for (var i = 1; i < ages.length; i++) {
+            if (m<ages[i]){
+                m = ages[i];
+            }
+        }
+        console.log(m);
+
+        var s = 0;
+        for (var i = 0; i < ages.length; i++) {
+            s += ages[i];     
+        }
+        //for(var age of ages) s+=age;
+        var average = Math.round(s/ages.length*100)/100;
+        console.log(average);
+
+
+
+    </script>
+    </body>
+</html>

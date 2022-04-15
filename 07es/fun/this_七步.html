@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+</head>
+<body>
+<script>
+// https://mp.weixin.qq.com/s/6qwgvru2-wXRYDn60oXA_A
+// 先念口诀：箭头函数、new、bind、apply 和 call、欧比届点（obj.）、直接调用、不在函数里。
+
+/*
+//箭头函数，没有this, 不能new
+//func = () => {}
+//new func() // throw error
+
+
+function func() {
+  console.log(this)
+}
+
+func.bind(1).bind(2)()  //只认第1个bind
+
+//箭头函数中 this 不会被修改
+func = () => {
+  // 这里 this 指向取决于外层 this，参考口诀 7 「不在函数里」
+  console.log(this)
+}
+
+func.bind(1)() // Window，口诀 1 优先
+
+
+//bind 与 new
+function func() {
+  console.log(this, this.__proto__ === func.prototype)
+}
+
+boundFunc = func.bind(1)
+new boundFunc() // Object true，口诀 2 优先
+
+//bind 函数中 this 不会被修改
+function func() {
+  console.log(this)
+}
+
+boundFunc = func.bind(1)
+boundFunc.apply(2) // 1，口诀 3 优先
+
+//欧比届点（obj.）
+function func() {
+  console.log(this.x)
+}
+
+obj = { x: 1 }
+obj.func = func
+obj.func() // 1
+
+//直接调用
+//在函数不满足前面的场景，被直接调用时，this 将指向全局对象。在浏览器环境中全局对象是 Window，在 Node.js 环境中是 Global。
+
+//先来个简单的例子。
+
+function func() {
+  console.log(this)
+}
+
+func() // Window
+
+//来一个复杂的例子，外层的 outerFunc 就起个迷惑目的。
+
+function outerFunc() {
+  console.log(this) // { x: 1 }
+
+  function func() {
+    console.log(this) // Window
+  }
+
+  func()
+}
+
+outerFunc.bind({ x: 1 })()
+
+//在非严格模式，全是Window。
+//如果得出 this 指向是 undefined 或 null，那么 this 会指向全局对象。
+//"use strict"
+
+function a() {
+  console.log("function a:", this)
+  ;(() => {
+    console.log("arrow function: ", this)
+  })()
+}
+
+a()
+
+a.bind(null)()
+
+a.bind(undefined)()
+
+a.bind().bind(2)()
+
+a.apply()
+
+
+//下面代码执行后，func.count 值为多少？
+function func(num) {
+  this.count++  //其实是window.count
+  console.log(this.count) //NAN
+  console.log(func.count)
+}
+
+func.count = 0
+func(1)
+console.log(func.count) //0
+*/
+
+
+
+//以下箭头函数中 this 指向谁呢？
+obj = {
+  func() {
+    const arrowFunc = () => {
+		console.log(this)
+      console.log(this._name)
+    }
+    return arrowFunc
+  },
+  _name: "obj",
+}
+
+obj.func()()  //obj 因为obj.
+
+func = obj.func
+func()()  //_name为undefined  因为 this是window
+
+obj.func.bind({ _name: "newObj" })()()  //newObj
+
+obj.func.bind()()()  //_name为undefined 因为null会作为window
+
+obj.func.bind({ _name: "bindObj" }).apply({ _name: "applyObj" })()  //bindObj 因为bind优先于apply
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>字符串的简单加密</title>
+    </head>
+    <body>
+    <input id="src" value="">
+    <button onclick="encrypt()">加密</button>
+    <input id="dst">
+
+	<script type="text/javascript">
+		function encrypt(){
+			var src = document.getElementById('src').value;
+
+			var dst = "";
+
+            for(var i=0; i<src.length; i++){
+                var c = src.charCodeAt(i);
+                var d = c+2;
+                var e = String.fromCharCode(d);
+                dst += e;
+            }
+
+			document.getElementById('dst').value = dst;
+		}
+	</script>
+
+
+    </body>
+</html>

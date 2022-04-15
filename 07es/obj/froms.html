@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>forms的写法</title>  
+</head>
+<body>
+	<H4>表单</H4>
+	<form name="myform" onsubmit="check()">
+	<br />姓名<input type="text" name="name" >
+	<br />年龄<input type="number" name="age" value="120">
+	<br /><button type="submit">确定</button>
+	</form>
+	<p>
+	</p>
+
+	<script type="text/javascript">  
+	function check(){
+		var age1 = document.forms["myform"]["age"].value;
+		var age2 = document.forms.myform.age.value;
+		var age3 = document.forms[0][1].value;
+		alert( age1+"," + age2 + ","+age3);
+		if( parseInt(age1,10)>100){
+			alert("年龄太大了");
+			return false; //不进行提交
+		}
+		return true;
+
+	}
+		
+	</script> 
+</body>
+</html>
