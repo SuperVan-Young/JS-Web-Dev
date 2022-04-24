@@ -14,11 +14,40 @@
       .g-head {
         position: fixed;
         display: flex;
-        justify-content: flex-end;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
         align-items: stretch;
         height: 106px;
         width: 100%;
         background-color: rgb(139, 0, 18);
+      }
+
+      .btn-c-nav {
+        z-index: 10000px;
+        height: 106px;
+        width: 90px;
+        background-color: rgb(139, 0, 18);
+      }
+
+      .btn-c-nav i {
+        color: white;
+        font-size: 60px;
+        margin: 0 auto;
+        line-height: 106px;
+      }
+
+      .btn-c-nav :hover {
+        cursor: pointer;
+      }
+
+      .c-nav {
+        display: none;
+        position: fixed;
+        z-index: 100px;
+        top: 106px;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(94, 94, 94, 0.3);
       }
 
       .search-bar {
@@ -40,7 +69,8 @@
       }
 
       .search-bar input {
-        width: 0px;
+        display: none;
+        width: 200px;
         height: 20px;
       }
 
@@ -127,7 +157,11 @@
     </style>
   </head>
   <body>
+    <div class="c-nav"></div>
     <header class="g-head">
+      <div class="btn-c-nav">
+        <i class="material-icons">reorder</i>
+      </div>
       <div class="g-nav">
         <div class="search-bar">
           <input type="text" />
@@ -207,12 +241,11 @@
           $(".g-nav ul li div").css("display", "none");
         });
       $(".search-bar i").on("click", function () {
-        if ($(".search-bar input").first().css("width") != "0px") {
-          $(".search-bar input").animate({"width": "0px"}, 500);
-        } else {
-          $(".search-bar input").animate({"width": "200px"}, 500);
-        }
+        $(".search-bar input").toggle(500);
       });
+      $(".btn-c-nav").on("click", function() {
+        $(".c-nav").toggle(500);
+      })
     });
   </script>
 </html>
