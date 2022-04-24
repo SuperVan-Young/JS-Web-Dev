@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .g-head {
+        position: fixed;
+        display: flex;
+        justify-content: flex-end;
+        align-items: stretch;
+        height: 100px;
+        width: 100%;
+        background-color: rgb(139, 0, 18);
+      }
+
+      .g-nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .g-nav ul li {
+        display: inline-block;
+
+        margin: 0 auto;
+        width: 120px;
+
+        color: aliceblue;
+        list-style: none;
+        text-align: center;
+      }
+
+      .g-nav ul li a {
+        height: 100px;
+
+        color: inherit;
+        text-align: center;
+        line-height: 100px;
+        text-decoration: none;
+
+        transition: color 0.2s ease-in-out;
+      }
+
+      .g-nav ul li:hover {
+        cursor: pointer;
+        color: gold;
+      }
+
+      .g-nav-list {
+        display: none;
+        color: black;
+        border-top: 2px goldenrod solid;
+        background-color: white;
+      }
+
+      .g-nav-list ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        position: relative;
+        left: -40px; /* (200 - 120) / 2 = 40 */
+        padding: 30px 0;
+        width: 200px;
+      }
+
+      .g-nav-list ul li {
+        text-align: center;
+        width: inherit;
+
+        padding: 0;
+        height: 40px;
+        color: black;
+        transition: color 0.2s ease-in-out background-color 0.2s ease-in-out;
+      }
+
+      .g-nav-list ul li:hover {
+        color: goldenrod;
+        background-color: rgba(94, 94, 94, 0.2);
+      }
+
+      .g-nav-list ul li a {
+        margin: 0 auto;
+        padding: 0;
+
+        color: inherit;
+        text-align: center;
+        line-height: 40px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="g-head">
+      <div class="g-nav">
+        <ul>
+          <li>
+            <a href="#">北大新闻</a>
+          </li>
+          <li>
+            <a href="#">学校概况↓</a>
+            <div class="g-nav-list">
+              <ul>
+                <li><a href="#">校庆致辞</a></li>
+                <li><a href="#">学校沿革</a></li>
+                <li><a href="#">历任领导</a></li>
+                <li><a href="#">现任领导</a></li>
+                <li><a href="#">组织机构</a></li>
+                <li><a href="#">统计资料</a></li>
+                <li><a href="#">信息公开</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">院系设置</a>
+          </li>
+          <li>
+            <a href="#">教育教学↓</a>
+            <div class="g-nav-list">
+              <ul>
+                <li><a href="#">师资队伍</a></li>
+                <li><a href="#">本科生教育</a></li>
+                <li><a href="#">研究生教育</a></li>
+                <li><a href="#">在线教育</a></li>
+                <li><a href="#">终身教育</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">科学研究↓</a>
+            <div class="g-nav-list">
+              <ul>
+                <li><a href="#">科研项目</a></li>
+                <li><a href="#">科研机构</a></li>
+                <li><a href="#">科研合作</a></li>
+                <li><a href="#">科研成果</a></li>
+                <li><a href="#">技术转移</a></li>
+                <li><a href="#">学术交流</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">招生就业</a>
+          </li>
+          <li>
+            <a href="#">合作交流</a>
+          </li>
+          <li>
+            <a href="#">走进北大</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section></section>
+  </body>
+
+  <script src="jquery.js"></script>
+  <script>
+    $(function () {
+      $(".g-nav ul li")
+        .on("mouseover", function () {
+          $(".g-nav ul li div").hide();
+          $(this).children("div").show();
+        })
+        .on("mouseout", function () {
+          $(".g-nav ul li div").css("display", "none");
+        });
+    });
+  </script>
+</html>
