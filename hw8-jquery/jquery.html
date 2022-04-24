@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- google icons css -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="Swiper-3.3.1/dist/css/swiper.min.css" />
+
     <title>Document</title>
 
+    <!-- header style -->
     <style>
       .g-head {
         position: fixed;
@@ -19,11 +26,12 @@
         align-items: stretch;
         height: 106px;
         width: 100%;
+        z-index: 10;
         background-color: rgb(139, 0, 18);
       }
 
       .btn-c-nav {
-        z-index: 10000px;
+        z-index: 10000;
         height: 106px;
         width: 90px;
         background-color: rgb(139, 0, 18);
@@ -43,8 +51,8 @@
       .c-nav {
         display: none;
         position: fixed;
-        z-index: 100px;
-        top: 106px;
+        z-index: 100;
+        top: 114px;
         height: 100%;
         width: 100%;
         background-color: rgba(94, 94, 94, 0.3);
@@ -155,6 +163,27 @@
         text-decoration: none;
       }
     </style>
+
+    <!-- section style -->
+    <style>
+      .swiper-container {
+        /* width: 100%;
+        height: 100%; */
+        width: 100%;
+        height: 2080px;
+        margin: 0 auto;
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
     <div class="c-nav"></div>
@@ -226,10 +255,34 @@
       </div>
     </header>
 
-    <section></section>
+    <section>
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+          <div class="swiper-slide">Slide 5</div>
+          <div class="swiper-slide">Slide 6</div>
+          <div class="swiper-slide">Slide 7</div>
+          <div class="swiper-slide">Slide 8</div>
+          <div class="swiper-slide">Slide 9</div>
+          <div class="swiper-slide">Slide 10</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
   </body>
 
+  <!-- jQuery JS -->
   <script src="jquery.js"></script>
+
+  <!-- Mouse behaviours -->
   <script>
     $(function () {
       $(".g-nav ul li")
@@ -243,9 +296,26 @@
       $(".search-bar i").on("click", function () {
         $(".search-bar input").toggle(500);
       });
-      $(".btn-c-nav").on("click", function() {
+      $(".btn-c-nav").on("click", function () {
         $(".c-nav").toggle(500);
-      })
+      });
+    });
+  </script>
+
+  <!-- Swiper JS -->
+  <script src="Swiper-3.3.1/dist/js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      pagination: ".swiper-pagination",
+      nextButton: ".swiper-button-next",
+      prevButton: ".swiper-button-prev",
+      paginationClickable: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: 2500,
+      autoplayDisableOnInteraction: false,
     });
   </script>
 </html>
