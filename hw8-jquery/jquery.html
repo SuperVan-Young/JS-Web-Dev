@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <title>Document</title>
 
     <style>
@@ -12,9 +16,32 @@
         display: flex;
         justify-content: flex-end;
         align-items: stretch;
-        height: 100px;
+        height: 106px;
         width: 100%;
         background-color: rgb(139, 0, 18);
+      }
+
+      .search-bar {
+        display: flex;
+        margin: 0 20px;
+        justify-content: flex-end;
+        height: 26px;
+      }
+
+      .search-bar i {
+        font-size: 26px;
+        color: white;
+      }
+
+      .search-bar i:hover {
+        color: rgb(139, 0, 18);
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .search-bar input {
+        width: 0px;
+        height: 20px;
       }
 
       .g-nav ul {
@@ -23,7 +50,7 @@
         justify-content: flex-start;
         align-items: stretch;
 
-        margin: 0 auto;
+        margin: 0 0 0 auto;
         padding: 0;
       }
 
@@ -32,6 +59,7 @@
 
         margin: 0 auto;
         width: 120px;
+        height: 80px;
 
         color: aliceblue;
         list-style: none;
@@ -43,7 +71,7 @@
 
         color: inherit;
         text-align: center;
-        line-height: 100px;
+        line-height: 80px;
         text-decoration: none;
 
         transition: color 0.2s ease-in-out;
@@ -101,6 +129,10 @@
   <body>
     <header class="g-head">
       <div class="g-nav">
+        <div class="search-bar">
+          <input type="text" />
+          <i class="material-icons">search</i>
+        </div>
         <ul>
           <li>
             <a href="#">北大新闻</a>
@@ -174,6 +206,13 @@
         .on("mouseout", function () {
           $(".g-nav ul li div").css("display", "none");
         });
+      $(".search-bar i").on("click", function () {
+        if ($(".search-bar input").first().css("width") != "0px") {
+          $(".search-bar input").animate({"width": "0px"}, 500);
+        } else {
+          $(".search-bar input").animate({"width": "200px"}, 500);
+        }
+      });
     });
   </script>
 </html>
