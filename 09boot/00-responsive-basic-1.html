@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" value="width=device-width, initial-scale=1.0">
+
+<title>响应式设计基础</title>
+
+
+
+<!-- 对IE9以下的版本，要加对htm5及css3媒体查询的支持 -->
+<!--[if lt IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+	<script src="http:////cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+<![endif]-->
+
+<style>
+
+/* 基础的css */
+body{
+	font-size: 32px;
+}
+
+#pagewrap {
+	width: 980px;
+	margin: 0 auto;
+	border: solid 1px #aaa;
+}
+.one { background-color: #eee; }
+.two { background-color: yellow;}
+
+.column {
+	width: 50%;
+	float: left;
+}
+
+.column img{ width: auto; max-width: 400px; float:left;}
+
+
+@media screen and (max-width: 850px) {
+	.column {
+		width: auto;
+		float: none;
+	}
+	.column img{ width: 100%; display: block; float:none;}
+}
+
+
+@media screen and (max-width: 650px) {
+	.column {
+		 color:red;
+		 font-size: 24px;
+	}
+	.column img{ display:none;}
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="pagewrap">
+
+	
+	<div class="column one">
+		<img src="http://placehold.it/300x200">
+		 one<br> one<br>
+		 one<br> one<br>
+		 one<br> one<br>
+		 one<br> one<br>
+		 
+	</div>
+	
+	<div class="column two">
+		<img src="http://placehold.it/300x200">
+		 two<br> two<br>
+		 two<br> two<br>
+		 two<br> two<br>
+		 two<br> two<br>
+	</div>	
+
+	
+</div>
+
+</body>
+</html>

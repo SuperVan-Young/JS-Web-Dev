@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+<title>响应式设计基础</title>
+
+
+
+<!-- 对IE9以下的版本，要加对htm5及css3媒体查询的支持 -->
+<!--[if lt IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+	<script src="http:////cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+<![endif]-->
+
+<style>
+
+/* 基础的css */
+body{
+	font-size: 32px;
+}
+
+#pagewrap {
+	width: 980px;
+	margin: 0 auto;
+	border: solid 1px #aaa;
+}
+#pagewrap div, #header, #content, #sidebar, #footer{
+	background: #f8f8f8;
+	margin: 3px; padding:5px 10px;
+	border: solid 1px #aaa;
+}
+#header {
+	height: 60px;
+}
+#content {
+	width: 600px;
+	float: left;
+}
+
+#sidebar {
+	width: 280px;
+	height: 100px;
+	float: right;
+}
+#footer {
+	clear: both;
+	color: #888;
+	font-size: 85%;
+}
+
+/* 小于 980px*/
+@media screen and (max-width: 980px) {
+	#pagewrap {
+		width: 95%;
+	}
+	#content {
+		width: 60%;
+	}
+	#sidebar {
+		width: 30%;
+	}
+}
+
+/* 小于 650px*/
+@media screen and (max-width: 650px) {
+	#header {
+		height: auto;
+	}
+	#content {
+		width: auto;
+		float: none;
+	}
+	#sidebar {
+		width: auto;
+		float: none;
+	}
+}
+
+/* 小于 450px*/
+@media screen and (max-width: 450px) {
+	#content {
+		font-size: 16px;
+	}
+}
+
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { display: inline-block; }
+.clearfix { display: block; zoom: 1; }
+
+
+</style>
+
+</head>
+
+<body>
+
+	<script>
+		// 用js更灵活，但更麻烦
+		var u = window.navigator.userAgent;
+		if( u.indexOf("apple")>=0){
+			//window.location.href = "http://a.xxx.com";
+		}else{
+			//window.location.href = "http://b.xxx.com";
+		}
+
+		if( screen.availWidth >= 1920){			
+			//document.querySelector(".pagewrap").style.maxWidth="1000px";
+		}
+		else if( screen.availWidth >= 980){
+			//document.querySelector(".pagewrap").style.width="100%";
+		}
+	</script>
+
+<div id="pagewrap">
+
+	<header id="header">
+		Header
+	</header>
+	
+	<div id="content">
+		content<br>content<br>
+		content<br>content<br>
+		content<br>content<br>
+		content<br>content<br>
+	</div>
+	
+	
+	<aside id="sidebar">
+		Sidebar
+	</aside>
+
+	<footer id="footer">
+		footer
+	</footer>
+	
+</div>
+
+</body>
+</html>

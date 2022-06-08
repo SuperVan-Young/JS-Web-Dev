@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bootstrap</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+<!--[if lt IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+	<script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="container text-center"> 
+	<div style="line-height:20px">&nbsp;</div>
+	<button class="btn btn-primary alert">alert</button> 
+	<button class="btn btn-primary confirm">confirm</button> 
+	<button class="btn btn-primary prompt">prompt</button> 
+	<button class="btn btn-primary dialog">dialog</button> 
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script> 
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script> 
+<script src="resource/js/bootbox.js"></script> 
+<script>
+	$(document).on("click", ".alert", function(e) {
+		bootbox.alert("Hello world!", function() {
+			console.log("Alert Callback");
+		});
+	});
+	
+	$(document).on("click", ".confirm", function(e) {
+		bootbox.confirm("Are you sure?", function(result) {
+		  console.log("Confirm Callback" + result);
+		}); 
+	});
+	
+	$(document).on("click", ".prompt", function(e) {
+		bootbox.prompt("What is your name?", function(result) {                
+		  if (result === null) {                                             
+			bootbox.alert("您没有填写名字!", function() {
+				console.log("Alert Callback");
+			});                              
+		  } else {
+			console.log("Prompt Callback" + result);                          
+		  }
+		});
+	});
+	
+	$(document).on("click", ".dialog", function(e) {
+		bootbox.dialog({
+		  message: "I am a custom dialog",
+		  title: "Custom title",
+		  buttons: {
+			success: {
+			  label: "Success!",
+			  className: "btn-success",
+			  callback: function() {
+				console.log("great success");
+			  }
+			},
+			danger: {
+			  label: "Danger!",
+			  className: "btn-danger",
+			  callback: function() {
+				console.log("uh oh, look out!");
+			  }
+			},
+			main: {
+			  label: "Click ME!",
+			  className: "btn-primary",
+			  callback: function() {
+				console.log("Primary button");
+			  }
+			}
+		  }
+		});
+	});
+</script>
+</body>
+</html>

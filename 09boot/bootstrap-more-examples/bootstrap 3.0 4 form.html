@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bootstrap</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+<!--[if lt IE 9]>
+	<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+	<script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="container">
+	<div style="line-height:10px">&nbsp;</div>
+	<form class="form-inline" role="form">
+		<div class="form-group">
+			<label class="sr-only" for="exampleInputEmail2">Email address</label>
+			<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="exampleInputPassword2">Password</label>
+			<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox">
+				Remember me </label>
+		</div>
+		<button type="submit" class="btn btn-default">Sign in</button>
+	</form>
+	<div style="line-height:40px">&nbsp;</div>
+	<form role="form">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control id="exampleInputEmail1" placeholder="Enter email">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<label for="name_first">Name</label>
+			<div class="row">
+				<div class="col-xs-2">
+					<input type="text" id="name_first" class="form-control" placeholder=".col-xs-2">
+				</div>
+				<div class="col-xs-3">
+					<input type="text" class="form-control" placeholder=".col-xs-3">
+				</div>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" placeholder=".col-xs-4">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="select1">Selects 1</label>
+			<select class="form-control" id="select1">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="optionsRadios3">Radio</label>
+			<br/>
+			<label class="radio-inline">
+				<input type="radio" name="optionsRadios_in" id="optionsRadios3" value="option1" checked>
+				one </label>
+			<label class="radio-inline">
+				<input type="radio" name="optionsRadios_in" id="optionsRadios4" value="option2">
+				two</label>
+		</div>
+		<div class="form-group">
+			<label for="select2">Selects 2</label>
+			<select multiple id="select2" class="form-control">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputFile">File input</label>
+			<input type="file" id="exampleInputFile">
+			<p class="help-block">Example block-level help text here.</p>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+				Option one is this and that&mdash;be sure to include why it's great </label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+				Option two can be something else and selecting it will deselect option one </label>
+		</div>
+		<div class="form-group">
+			<label for="exampleTextarea">Text Desc</label>
+			<textarea id="exampleTextarea" class="form-control" rows="3"></textarea>
+		</div>
+		<div class="form-group">
+			<label class="checkbox-inline">
+				<input type="checkbox" id="inlineCheckbox1" value="option1">
+				1 </label>
+			<label class="checkbox-inline">
+				<input type="checkbox" id="inlineCheckbox2" value="option2">
+				2 </label>
+			<label class="checkbox-inline">
+				<input type="checkbox" id="inlineCheckbox3" value="option3">
+				3 </label>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox">
+				Check me out </label>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	<div style="line-height:40px">&nbsp;</div>
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">NiceName</label>
+			<div class="col-sm-10">
+				<p class="form-control-static">Jerome</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
+			<div class="col-sm-10">
+				<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox">
+						Remember me </label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Sign in</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script> 
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>
